@@ -88,10 +88,10 @@ class BackyardFlyer(Drone):
         1. Return waypoints to fly a box
         """
         return ([
-            [00.0, 00.0, 3.0, 0.0],
-            [00.0, 10.0, 3.0, 0.0],
-            [10.0, 10.0, 3.0, 0.0],
             [10.0, 00.0, 3.0, 0.0],
+            [10.0, 10.0, 3.0, 0.0],
+            [00.0, 10.0, 3.0, 0.0],
+            [00.0, 00.0, 3.0, 0.0],
         ])
 
     def arming_transition(self):
@@ -127,7 +127,7 @@ class BackyardFlyer(Drone):
         2. Transition to WAYPOINT state
         """
         print("waypoint transition")
-        next_waypoint = self.all_waypoints.pop()
+        next_waypoint = self.all_waypoints.pop(0)
         print(f"next_waypoint: {next_waypoint}")
         self.target_position = next_waypoint[0:3]
         self.cmd_position(*next_waypoint)
